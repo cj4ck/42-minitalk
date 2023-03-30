@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:51:09 by cjackows          #+#    #+#             */
-/*   Updated: 2023/03/30 19:55:18 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:38:37 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		ft_putendl_fd("X", 1);
+		ft_putendl_fd("ERROR", 1);
 		return (1);
 	}
 }
