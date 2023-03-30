@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:51:09 by cjackows          #+#    #+#             */
-/*   Updated: 2023/03/29 14:43:33 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:55:18 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 int	main(int ac, char **av)
 {
+	int					pid;
+
 	if (ac == 3)
 	{
-	//error check
+		pid = ft_atoi(av[1]);
+		return (0);
 	}
 	else
 	{
