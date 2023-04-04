@@ -1,4 +1,5 @@
 server
 client
+*-test*
 *.o
 *.a
