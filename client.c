@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:51:09 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/04 15:15:50 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/04 15:30:11 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int ac, char **av)
 {
 	int					pid;
 	int					i;
-	struct sigaction	sigation_call;
+	struct sigaction	signal;
 
 	if (ac == 3)
 	{
