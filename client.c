@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:51:09 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/04 14:24:04 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/04 15:15:50 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ static void	server_signal_handler(int n)
 }
 
 /*
-	Value of a char in memory is represented as 8 bits (1 byte) therfore to send a char
-	over signals we first need to convert it into binary. To achive that function
-	iterates 8 times wich each repetition shifting the first bit to the left
-	going down to the least significant bit (bit 0).
+	Value of a char in memory is represented as 8 bits (1 byte) therfore to 
+	send a char over signals we first need to convert it into binary.
+	To achive that function iterates 8 times wich each repetition 
+	shifting the first bit to the left going down to the least 
+	significant bit (bit 0).
 	
 	
 	The line "((c >> i) & 1)" is used to shift the binary representation
@@ -73,9 +74,15 @@ int	main(int ac, char **av)
 	{
 		pid = ft_atoi(av[1]);
 		if (kill(pid, 0) == 0)
+		{
 			ft_printf("PID %d is valid.\n", pid);
+			ft_printf("Processing to send the message...\n");
+		}
 		else
+		{
 			ft_printf("ERROR - PID %d is invalid.\n", pid);
+			return (1);
+		}
 		sigation_call.sa_flags = SA_RESTART;
 		sigation_call.sa_handler = &server_signal_handler;
 		// if (sigaction(SIGUSR1, &sigation_call, NULL) == -1)
@@ -85,6 +92,7 @@ int	main(int ac, char **av)
 		while (av[2][i])
 			char2binary(pid, av[2][i++]);
 		char2binary(pid, '\0');
+		return (0);
 	}
 	else
 	{
