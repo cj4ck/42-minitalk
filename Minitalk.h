@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:46:40 by cjackows          #+#    #+#             */
-/*   Updated: 2023/03/30 20:35:36 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/04 13:08:20 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 
 # include "libft/libft.h"
 # include <signal.h>
+# include <stdlib.h>
 
 #endif
