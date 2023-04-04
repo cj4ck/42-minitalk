@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 22:46:01 by cjackows          #+#    #+#             */
-/*   Updated: 2022/06/18 17:41:50 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/03 12:05:36 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * -> similar to memcpy but better
  * One of 'dest' or 'src' can be NULL but not both!
  * @param dest - Destiny array.
- * @param src - Source from wchich array get copied.
+ * @param src - Source from which array get copied.
  * @param n Up to how many characters get copied.
  * @return dest*
  */

@@ -57,7 +57,7 @@ static void	char2binary(int pid, char c)
 		else
 			kill(pid, SIGUSR2);
 		while (!g_message_delivered)
-			usleep(500); //! wip
+			sleep(500); //! wip
 		g_message_delivered = 0;
 		i--;
 	}

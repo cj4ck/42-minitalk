@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjackows <cjackows@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 03:24:51 by cjackows          #+#    #+#             */
-/*   Updated: 2022/06/21 22:50:14 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/03 11:47:35 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+# include <stdlib.h>
+# include <stdint.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -23,7 +29,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-// PART 1
+// --- PART 1 ---
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -49,7 +55,7 @@ int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 
-// PART 2
+// --- PART 2 ---
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -63,7 +69,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-// BONUS PART
+// --- BONUS PART ---
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -74,5 +80,11 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *content));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// --- ft_printf --- 
+int	ft_printf(const char *str, ...);
+int	ft_print(char c, char *str);
+int	ft_putnbr(const char *c, int base, size_t nbr);
+int	ft_pointer(const char *hex, size_t ptr);
 
 #endif

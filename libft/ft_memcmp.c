@@ -6,14 +6,14 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:29:28 by cjackows          #+#    #+#             */
-/*   Updated: 2022/06/19 16:00:14 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/03 12:11:42 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief unction returns a negative, zero, or positive integer depending on 
+ * @brief Function returns a negative, zero, or positive integer depending on 
  * whether the first n characters of the object pointed to by s1 are 
  * less than, equal to, or greater than the first n characters of the object 
  * pointed to by s2. 
