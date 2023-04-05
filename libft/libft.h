@@ -6,22 +6,15 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 03:24:51 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/05 14:52:54 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:59:00 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stddef.h>
-# include <stdlib.h>
-# include <stdint.h>
 # include <stdarg.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <limits.h>
 
 typedef struct s_list
 {
