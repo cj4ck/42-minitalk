@@ -6,20 +6,20 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:51:09 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/04 15:30:11 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/05 11:22:26 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Minitalk.h"
 
-static int	g_message_delivered;
+// static int	g_message_delivered;
 
-static void	server_signal_handler(int n)
-{
-	g_message_delivered = 1;
-	if (n == SIGUSR1)
-		ft_putstr_fd("Message delivered successfully!", 1);
-}
+// static void	server_signal_handler(int n)
+// {
+// 	g_message_delivered = 1;
+// 	if (n == SIGUSR1)
+// 		ft_putstr_fd("Message delivered successfully!", 1);
+// }
 
 /*
 	Value of a char in memory is represented as 8 bits (1 byte) therfore to 
@@ -34,41 +34,72 @@ static void	server_signal_handler(int n)
 	Function use SIGUSR2 (=30) to send "0" and SIGUSR1 (=31) to send "1".
 	
 	Example for char `A`
-	i = 8 | -> 01000001 | 0 | SIGUSR2
-	i = 7 | -> 1000001  | 1 | SIGUSR1
-	i = 6 | -> 000001   | 0 | [...]
-	i = 5 | -> 00001    | 0
-	i = 4 | -> 0001     | 0
-	i = 3 | -> 001      | 0
-	i = 2 | -> 01       | 0
-	i = 1 | -> 1        | 1
+	i = 7 | -> 01000001 | 0 | SIGUSR2
+	i = 6 | -> 1000001  | 1 | SIGUSR1
+	i = 5 | -> 000001   | 0 | [...]
+	i = 4 | -> 00001    | 0
+	i = 3 | -> 0001     | 0
+	i = 2 | -> 001      | 0
+	i = 1 | -> 01       | 0
+	i = 0 | -> 1        | 1
 	---=[ At this point the character has been send ]=---
 	g_message_delivered = 0; Because now we need to wait for server to
 	send a signal back indicating that the message has been recived.
 */
 
+// static void	char2binary(int pid, char c)
+// {
+// 	int	i;
+// 	i = 8;
+
+// 	while (i > 0)
+// 	{		
+// 		if ((c >> i) & 1)
+// 		{
+// 			kill(pid, SIGUSR1);
+// 			ft_printf("1");
+// 		}
+// 		else
+// 		{
+// 			kill(pid, SIGUSR2);
+// 			ft_printf("0");
+// 		}
+// 		// while (!g_message_delivered)
+// 		// 	sleep(500); //! wip
+// 		// g_message_delivered = 0;
+// 		i--;
+// 	}
+// }
+
 static void	char2binary(int pid, char c)
 {
-	int	i;
-
-	while (i > 0)
-	{		
+	int	i = 7;
+	while(i >= 0)
+	{
 		if ((c >> i) & 1)
+		{
+			ft_printf("\ni - %d\n", i);
 			kill(pid, SIGUSR1);
+			ft_printf("  1");
+		}
 		else
+		{
+			ft_printf("\ni - %d\n", i);
 			kill(pid, SIGUSR2);
-		while (!g_message_delivered)
-			sleep(500); //! wip
-		g_message_delivered = 0;
+			ft_printf("  0");
+		}
+		usleep(500);
 		i--;
 	}
 }
+
 
 int	main(int ac, char **av)
 {
 	int					pid;
 	int					i;
-	struct sigaction	signal;
+	i = 0;
+	// struct sigaction	signal;
 
 	if (ac == 3)
 	{
@@ -83,20 +114,21 @@ int	main(int ac, char **av)
 			ft_printf("ERROR - PID %d is invalid.\n", pid);
 			return (1);
 		}
-		sigation_call.sa_flags = SA_RESTART;
-		sigation_call.sa_handler = &server_signal_handler;
+		// sigation_call.sa_flags = SA_RESTART;
+		// sigation_call.sa_handler = &server_signal_handler;
 		// if (sigaction(SIGUSR1, &sigation_call, NULL) == -1)
 		// 	ft_putstr_fd("Error with SIGUSR1\n", 1);
 		// if (sigaction(SIGUSR2, &sigation_call, NULL) == -1)
 		// 	ft_putstr_fd("Error with SIGUSR2\n", 1);
 		while (av[2][i])
 			char2binary(pid, av[2][i++]);
+		ft_printf("\n\nNULL\n");
 		char2binary(pid, '\0');
 		return (0);
 	}
 	else
 	{
-		ft_putendl_fd("ERROR - Not enough arguments", 1);
+		ft_printf("ERROR - Not enough arguments");
 		return (1);
 	}
 }
