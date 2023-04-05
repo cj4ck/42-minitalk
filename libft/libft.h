@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 03:24:51 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/03 11:47:35 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:52:54 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 // --- ft_printf --- 
-int	ft_printf(const char *str, ...);
-int	ft_print(char c, char *str);
-int	ft_putnbr(const char *c, int base, size_t nbr);
-int	ft_pointer(const char *hex, size_t ptr);
+int		ft_printf(const char *str, ...);
+int		ft_print(char c, char *str);
+int		ft_putnbr(const char *c, int base, size_t nbr);
+int		ft_pointer(const char *hex, size_t ptr);
 
 #endif

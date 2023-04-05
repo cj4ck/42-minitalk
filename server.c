@@ -6,72 +6,65 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:41:52 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/05 11:58:45 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:52:04 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Minitalk.h"
 #include "libft/libft.h"
 
-int	new_putchar(unsigned int c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
+/*	
+	
+	The line "((c >> i) & 1)" is used to shift the binary representation
+	 of the character c to the left by one bit, 
+	filling the byte with correct bits.
+	Function use SIGUSR2 (=30) to send "0" and SIGUSR1 (=31) to send "1".
+	
+	?	---= Left bit shift =---
+	?	b7 b6 b5 b4 b3 b2 b1 b0
+	?	b6 b5 b4 b3 b2 b1 b0 0
+*/
 static void	client_sig(int signal, siginfo_t *info, void *context)
 {
 	static unsigned int		c;
 	static int				i;
 	static int				pid;
 
-	(void)*context;
 	if (pid == 0)
 		pid = info->si_pid;
-	// b2c(signal, &c);
 	if (signal == SIGUSR1)
-	{
-		// printf("1\n");
 		c = (c << 1) | 1;
-	}
 	else if (signal == SIGUSR2)
-	{
-		// printf("0\n");
 		c = c << 1;
-	}
 	if (++i == 8)
 	{
 		i = 0;
 		if (!c)
 		{
-			ft_printf("\nMessage: \n");
-		// kill(pid, SIGUSR1);
+			kill(pid, SIGUSR1);
+			pid = 0;
+			ft_printf("\033[0;36m\nMessage: \033[0m\n");
 			return ;
-		// pid = 0;
 		}
-		new_putchar(c);
+		ft_printf("%c", c);
 		c = 0;
 	}
-	// kill(pid, SIGUSR2);
 }
 
 int	main(void)
 {
 	struct sigaction	signal;
+	int					i;
 
-	ft_printf("Server is starting...\n", 1);
-	ft_printf("Server started with PID %d\n", getpid());
-	ft_printf("Awaiting for message... \n");
-	ft_printf("Message: \n");
+	ft_printf("\033[0;32mServer started with PID %d\n", getpid());
+	ft_printf("\033[0;36mMessage: \033[0m\n");
 	signal.sa_flags = SA_RESTART | SA_SIGINFO;
 	signal.sa_sigaction = client_sig;
 	if (sigaction(SIGUSR1, &signal, NULL) == -1)
-		ft_putstr_fd("Error with SIGUSR1\n", 1);
+		ft_printf("\033[0;31mERROR SIGUSR1\033[0m\n");
 	if (sigaction(SIGUSR2, &signal, NULL) == -1)
-		ft_putstr_fd("Error with SIGUSR2\n", 1);
+		ft_printf("\033[0;31mERROR SIGUSR2\033[0m\n");
 	while (1)
-	{
-	pause();
-	}
+		pause();
 	return (0);
 }
