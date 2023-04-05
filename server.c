@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:41:52 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/05 11:27:52 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/05 11:58:45 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,6 @@ int	new_putchar(unsigned int c)
 {
 	write(1, &c, 1);
 	return (1);
-}
-
-static void	b2c(int signal, unsigned int *c)
-{
-	if (signal == SIGUSR1)
-	{
-		printf("1\n");
-		// *c = (*c << 1) | 1;
-	}
-	else if (signal == SIGUSR2)
-	{
-		printf("0\n");
-		// *c = *c << 1;
-	}
 }
 
 static void	client_sig(int signal, siginfo_t *info, void *context)
@@ -71,17 +57,17 @@ static void	client_sig(int signal, siginfo_t *info, void *context)
 
 int	main(void)
 {
-	struct sigaction	sa; //?
+	struct sigaction	signal;
 
 	ft_printf("Server is starting...\n", 1);
 	ft_printf("Server started with PID %d\n", getpid());
 	ft_printf("Awaiting for message... \n");
 	ft_printf("Message: \n");
-	sa.sa_flags = SA_RESTART | SA_SIGINFO;
-	sa.sa_sigaction = client_sig;
-	if (sigaction(SIGUSR1, &sa, NULL) == -1)
+	signal.sa_flags = SA_RESTART | SA_SIGINFO;
+	signal.sa_sigaction = client_sig;
+	if (sigaction(SIGUSR1, &signal, NULL) == -1)
 		ft_putstr_fd("Error with SIGUSR1\n", 1);
-	if (sigaction(SIGUSR2, &sa, NULL) == -1)
+	if (sigaction(SIGUSR2, &signal, NULL) == -1)
 		ft_putstr_fd("Error with SIGUSR2\n", 1);
 	while (1)
 	{

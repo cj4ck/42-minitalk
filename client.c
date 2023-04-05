@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:51:09 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/05 11:22:26 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/05 11:59:39 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,48 +47,18 @@
 	send a signal back indicating that the message has been recived.
 */
 
-// static void	char2binary(int pid, char c)
-// {
-// 	int	i;
-// 	i = 8;
-
-// 	while (i > 0)
-// 	{		
-// 		if ((c >> i) & 1)
-// 		{
-// 			kill(pid, SIGUSR1);
-// 			ft_printf("1");
-// 		}
-// 		else
-// 		{
-// 			kill(pid, SIGUSR2);
-// 			ft_printf("0");
-// 		}
-// 		// while (!g_message_delivered)
-// 		// 	sleep(500); //! wip
-// 		// g_message_delivered = 0;
-// 		i--;
-// 	}
-// }
-
 static void	char2binary(int pid, char c)
 {
+// g_message_delivered = 0;
 	int	i = 7;
 	while(i >= 0)
 	{
 		if ((c >> i) & 1)
-		{
-			ft_printf("\ni - %d\n", i);
 			kill(pid, SIGUSR1);
-			ft_printf("  1");
-		}
 		else
-		{
-			ft_printf("\ni - %d\n", i);
 			kill(pid, SIGUSR2);
-			ft_printf("  0");
-		}
-		usleep(500);
+		// while (!g_message_delivered)
+		usleep(500);//! ?
 		i--;
 	}
 }
@@ -99,7 +69,7 @@ int	main(int ac, char **av)
 	int					pid;
 	int					i;
 	i = 0;
-	// struct sigaction	signal;
+	struct sigaction	signal;
 
 	if (ac == 3)
 	{
@@ -114,15 +84,14 @@ int	main(int ac, char **av)
 			ft_printf("ERROR - PID %d is invalid.\n", pid);
 			return (1);
 		}
-		// sigation_call.sa_flags = SA_RESTART;
-		// sigation_call.sa_handler = &server_signal_handler;
-		// if (sigaction(SIGUSR1, &sigation_call, NULL) == -1)
+		// signal.sa_flags = SA_RESTART;
+		// signal.sa_handler = &server_signal_handler;
+		// if (sigaction(SIGUSR1, &signal, NULL) == -1)
 		// 	ft_putstr_fd("Error with SIGUSR1\n", 1);
-		// if (sigaction(SIGUSR2, &sigation_call, NULL) == -1)
+		// if (sigaction(SIGUSR2, &signal, NULL) == -1)
 		// 	ft_putstr_fd("Error with SIGUSR2\n", 1);
 		while (av[2][i])
 			char2binary(pid, av[2][i++]);
-		ft_printf("\n\nNULL\n");
 		char2binary(pid, '\0');
 		return (0);
 	}
