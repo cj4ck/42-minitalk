@@ -17,6 +17,42 @@
 -   `kill()`: It's a function in C programming language that is used to send a signal to a process or a group of processes. The signal can be used to terminate a process or to interrupt its execution.
 -   `getpid()`: It's a function in C programming language that is used to get the process ID of the current process. The process ID is a unique identifier assigned to each process by the operating system.
 
+# Compilation:
+
+To compile the client program, use the following command:
+
+```bash
+make client
+```
+To compile the server program, use the following command:
+
+```
+make server
+```
+
+## Running the Programs
+To run the server program, execute the following command:
+
+```bash
+./server
+```
+The server program will start listening for incoming signals.
+
+To run the client program, execute the following command:
+
+```bash
+./client [server PID] [message]
+```
+
+Replace [server PID] with the process ID of the server program and [message] with the message you want to send to the server.
+
+For example, if the server PID is 1234 and you want to send the message "Hello, World!" to the server, execute the following command:
+```bash
+./client 1234 "Hello, World!"
+```
+
+# Resources:
+
 ## Signals in C
 >A signal is a software interrupt that is sent to a process by the operating system in an event such as when a user presses ctrl-c in terminal.  Signals are asynchronous notifications delivered to your script when specific events occur.
 
