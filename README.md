@@ -3,19 +3,11 @@
 #📝/Computer_Science/Programming/C 
 
 # General concepts of the project
+> The objective of this project is to create a client-server program that can communicate with each other using UNIX signals. The client program sends a string message to the server program, which receives the message and displays it on the standard output.
 - The purpose of this project is to code a small data exchange program using UNIX signals.
 -  The client will send information (a string) to the server using UNIX signals.
 - The server must correctly receive and interpret this information, then display it.
-
-### Allowed functions
--  `write()` | `ft_printf()` | `pause()` | `sleep()` | `usleep()` | `exit()` | `malloc()` | `free()` | `libft functions`
-##### New functions
--    `signal()`: It's a function in C programming language that is used to set up a signal handler for a specific signal. A signal handler is a function that is called when a signal is sent to the program.
--   `sigaction()`: It's a function in C programming language that is used to set up a signal handler for a specific signal. It's safer than the `signal()` function because it provides more control over how the signal is handled.
--   `sigemptyset()`: It's a function in C programming language that is used to initialize a signal set to empty. A signal set is a collection of signals that can be blocked or unblocked by the program.
--   `sigaddset()`: It's a function in C programming language that is used to add a signal to a signal set. Once a signal is added to a signal set, it can be blocked or unblocked by the program.
--   `kill()`: It's a function in C programming language that is used to send a signal to a process or a group of processes. The signal can be used to terminate a process or to interrupt its execution.
--   `getpid()`: It's a function in C programming language that is used to get the process ID of the current process. The process ID is a unique identifier assigned to each process by the operating system.
+- Server sends signal back, comfirming that the message got delivered.
 
 # Compilation:
 
@@ -52,6 +44,16 @@ For example, if the server PID is 1234 and you want to send the message "Hello, 
 ```
 
 # Resources:
+
+### Allowed functions
+-  `write()` | `ft_printf()` | `pause()` | `sleep()` | `usleep()` | `exit()` | `malloc()` | `free()` | `libft functions`
+##### New functions
+-    `signal()`: It's a function in C programming language that is used to set up a signal handler for a specific signal. A signal handler is a function that is called when a signal is sent to the program.
+-   `sigaction()`: It's a function in C programming language that is used to set up a signal handler for a specific signal. It's safer than the `signal()` function because it provides more control over how the signal is handled.
+-   `sigemptyset()`: It's a function in C programming language that is used to initialize a signal set to empty. A signal set is a collection of signals that can be blocked or unblocked by the program.
+-   `sigaddset()`: It's a function in C programming language that is used to add a signal to a signal set. Once a signal is added to a signal set, it can be blocked or unblocked by the program.
+-   `kill()`: It's a function in C programming language that is used to send a signal to a process or a group of processes. The signal can be used to terminate a process or to interrupt its execution.
+-   `getpid()`: It's a function in C programming language that is used to get the process ID of the current process. The process ID is a unique identifier assigned to each process by the operating system.
 
 ## Signals in C
 >A signal is a software interrupt that is sent to a process by the operating system in an event such as when a user presses ctrl-c in terminal.  Signals are asynchronous notifications delivered to your script when specific events occur.
