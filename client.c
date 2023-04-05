@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:51:09 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/05 14:51:11 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:54:40 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	char2binary(int pid, char c)
 	i = 7;
 	while (i >= 0)
 	{
-		printf("i = %d\n", i);
 		if ((c >> i) & 1)
 			kill(pid, SIGUSR1);
 		else
