@@ -3,9 +3,47 @@
 #📝/Computer_Science/Programming/C 
 
 # General concepts of the project
+> The objective of this project is to create a client-server program that can communicate with each other using UNIX signals. The client program sends a string message to the server program, which receives the message and displays it on the standard output.
 - The purpose of this project is to code a small data exchange program using UNIX signals.
 -  The client will send information (a string) to the server using UNIX signals.
 - The server must correctly receive and interpret this information, then display it.
+- Server sends signal back, comfirming that the message got delivered.
+
+# Compilation:
+
+To compile the client program, use the following command:
+
+```bash
+make client
+```
+To compile the server program, use the following command:
+
+```
+make server
+```
+
+## Running the Programs
+To run the server program, execute the following command:
+
+```bash
+./server
+```
+The server program will start listening for incoming signals.
+
+To run the client program, execute the following command:
+
+```bash
+./client [server PID] [message]
+```
+
+Replace [server PID] with the process ID of the server program and [message] with the message you want to send to the server.
+
+For example, if the server PID is 1234 and you want to send the message "Hello, World!" to the server, execute the following command:
+```bash
+./client 1234 "Hello, World!"
+```
+
+# Resources:
 
 ### Allowed functions
 -  `write()` | `ft_printf()` | `pause()` | `sleep()` | `usleep()` | `exit()` | `malloc()` | `free()` | `libft functions`
