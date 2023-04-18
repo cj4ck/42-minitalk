@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:51:09 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/05 14:54:40 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:30:19 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	main(int ac, char **av)
 			char2binary(pid, av[2][i++]);
 		char2binary(pid, '\0');
 		if (!g_message_delivered)
-			ft_printf("\033[0;31mServer didn't response :(\033[0m\n");
+			ft_printf("\033[0;31mServer didn't respond :(\033[0m\n");
 	}
 	else
 		ft_printf("\033[0;31mArgument parsing error\033[0m\n");
